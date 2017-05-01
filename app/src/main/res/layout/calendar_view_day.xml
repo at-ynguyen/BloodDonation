@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llDay"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/calendar_cell_height"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvDay"
+        android:layout_width="@dimen/calendar_textview_day_size"
+        android:layout_height="@dimen/calendar_textview_day_size"
+        android:layout_marginTop="@dimen/calendar_textview_day_margin_top"
+        android:gravity="center"
+        android:textColor="@color/colorTextViewDayCalendar"
+        android:textSize="@dimen/calendar_textview_day_text_size"
+        android:textStyle="bold"
+        tools:text="10" />
+
+    <LinearLayout
+        android:id="@+id/llNote"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/imgTakeMedicine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_selection_check"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/imgSymptomLog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_symptom_check"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/imgSymptomNote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_medical_condition_note"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/imgMedicalNote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_medical_examination_note"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_height"
+        android:background="@color/colorLine" />
+</LinearLayout>
