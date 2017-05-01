@@ -1,6 +1,7 @@
 package com.project.ync.blooddonation.ui.event;
 
 import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -30,6 +31,8 @@ public class EventFragment extends BaseFragment {
     ProgressBar mProgressBar;
     @ViewById(R.id.recyclerView)
     RecyclerView mRecyclerView;
+    @ViewById(R.id.swipeRefreshLayout)
+    SwipeRefreshLayout mSwipeRefreshLayout;
 
     private List<EventResponse> mEventResponses;
     private int currentPages = 1;
@@ -92,6 +95,27 @@ public class EventFragment extends BaseFragment {
                     }
                 }, 1000);
 
+            }
+        });
+
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Call<List<EventResponse>> call = ApiClient.call().getListEvent(currentPages);
+                call.enqueue(new ApiCallback<List<EventResponse>>() {
+                    @Override
+                    public void success(List<EventResponse> eventResponses) {
+                        mSwipeRefreshLayout.setRefreshing(false);
+                        mEventResponses.clear();
+                        mEventResponses.addAll(eventResponses);
+                        adapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void failure(ApiError apiError) {
+                        mSwipeRefreshLayout.setRefreshing(false);
+                    }
+                });
             }
         });
     }

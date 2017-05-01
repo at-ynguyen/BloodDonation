@@ -25,7 +25,7 @@
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="70dp"
         android:layout_marginTop="20dp"
         android:text="Đăng nhập"
         app:btn_borderColor="@color/colorPrimary"

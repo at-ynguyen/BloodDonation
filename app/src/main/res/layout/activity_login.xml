@@ -72,10 +72,24 @@
                 android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="70dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Đăng nhập"
+                app:btn_borderColor="@color/colorPrimary"
+                app:btn_borderWidth="1dp"
+                app:btn_defaultColor="@android:color/white"
+                app:btn_textColor="@color/colorPrimary" />
+
+            <com.project.ync.blooddonation.widget.CustomButton
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="40dp"
-                android:text="Đăng nhập"
+                android:text="Đăng ký"
                 app:btn_defaultColor="@color/colorPrimary" />
         </LinearLayout>
     </ScrollView>

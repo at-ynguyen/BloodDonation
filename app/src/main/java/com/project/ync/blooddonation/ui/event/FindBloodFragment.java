@@ -1,6 +1,7 @@
 package com.project.ync.blooddonation.ui.event;
 
 import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -30,6 +31,8 @@ public class FindBloodFragment extends BaseFragment {
     ProgressBar mProgressBar;
     @ViewById(R.id.recyclerView)
     RecyclerView mRecyclerView;
+    @ViewById(R.id.swipeRefreshLayout)
+    SwipeRefreshLayout mSwipeRefreshLayout;
 
     List<FindBlood> mFindBloods = new ArrayList<>();
     private int mCurrentPages = 1;
@@ -90,6 +93,27 @@ public class FindBloodFragment extends BaseFragment {
                     }
                 }, 1000);
 
+            }
+        });
+
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Call<List<FindBlood>> call = ApiClient.call().getListFindBlood(mCurrentPages);
+                call.enqueue(new ApiCallback<List<FindBlood>>() {
+                    @Override
+                    public void success(List<FindBlood> findBloods) {
+                        mSwipeRefreshLayout.setRefreshing(false);
+                        mFindBloods.clear();
+                        mFindBloods.addAll(findBloods);
+                        adapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void failure(ApiError apiError) {
+                        mSwipeRefreshLayout.setRefreshing(false);
+                    }
+                });
             }
         });
     }

@@ -66,4 +66,9 @@ public class LoginActivity extends BaseActivity {
         });
 
     }
+
+    @Click(R.id.btnRegister)
+    void onRegisterClick() {
+        RegisterActivity_.intent(LoginActivity.this).start();
+    }
 }
