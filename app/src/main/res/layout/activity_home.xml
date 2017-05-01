@@ -9,14 +9,16 @@
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottomBar" />
+        android:layout_above="@+id/bottomBar"
+        android:layout_below="@+id/rlHeader" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:itemBackground="@color/backgroundBar"
+        android:background="@android:color/white"
+        android:elevation="10dp"
         app:itemIconTint="@drawable/selector_select_tab_bottom"
         app:itemTextColor="@drawable/selector_select_tab_bottom"
         app:menu="@menu/bottom_navigation_main" />

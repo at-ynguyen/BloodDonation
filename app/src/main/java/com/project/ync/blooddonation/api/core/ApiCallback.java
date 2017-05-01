@@ -1,6 +1,8 @@
-package jp.welby.pah.api.core;
+package com.project.ync.blooddonation.api.core;
 
 import android.util.Log;
+
+import com.project.ync.blooddonation.R;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
@@ -11,7 +13,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Converter;
 import retrofit2.Response;
-import jp.welby.pah.R;
 
 /**
  * Api Callback.
@@ -37,7 +38,11 @@ public abstract class ApiCallback<T> implements Callback<T> {
             try {
                 ApiError errorMessage = getErrorBodyAs(ApiError.class, response);
                 if (errorMessage != null) {
-                    failure(new ApiError(errorMessage.getCode(), errorMessage.getMessage()));
+                    if (errorMessage.getCode() == 401) {
+                        failure(new ApiError(errorMessage.getCode(), "Tài khoản đã hết hạng vui lòng đăng nhập lại!"));
+                    } else {
+                        failure(new ApiError(errorMessage.getCode(), errorMessage.getMessage()));
+                    }
                 } else {
                     failure(new ApiError(HttpURLConnection.HTTP_CLIENT_TIMEOUT,
                             ApiClient.getInstance().getContext().getString(R.string.valid_error_retrofit_network_error)));

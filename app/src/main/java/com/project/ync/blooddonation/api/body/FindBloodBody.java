@@ -1,6 +1,7 @@
-package com.project.ync.blooddonation.model;
+package com.project.ync.blooddonation.api.body;
 
 import com.google.gson.annotations.SerializedName;
+import com.project.ync.blooddonation.model.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,7 +15,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor(suppressConstructorProperties = true)
-public class FindBlood {
+public class FindBloodBody {
     private User user;
     @SerializedName("post_name")
     private String postName;
@@ -25,7 +26,7 @@ public class FindBlood {
     @SerializedName("address")
     private String address;
 
-    public FindBlood(String postName, String postContent, String bloodType, String address) {
+    public FindBloodBody(String postName, String postContent, String bloodType, String address) {
         this.postName = postName;
         this.postContent = postContent;
         this.bloodType = bloodType;

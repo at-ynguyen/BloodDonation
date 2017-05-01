@@ -14,12 +14,12 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor(suppressConstructorProperties = true)
-public class loginBody {
+public class LoginBody {
     @SerializedName("email")
     private String email;
     @SerializedName("password")
     private String password;
 
-    public loginBody() {
+    public LoginBody() {
     }
 }

@@ -16,8 +16,8 @@ import java.util.Calendar;
 /**
  * @author YNC
  */
-@EFragment(R.layout.fragment_history)
-public class HistoryFragment extends BaseFragment {
+@EFragment(R.layout.fragment_calendar_history)
+public class HistoryCalendarFragment extends BaseFragment {
     @ViewById(R.id.viewPager)
     ViewPager mViewPager;
     @ViewById(R.id.tvMonthOfYear)
@@ -31,13 +31,15 @@ public class HistoryFragment extends BaseFragment {
         mCalendar = Calendar.getInstance();
         mCalendar.add(Calendar.YEAR, -1000);
         loadCalendar();
+    }
 
+    @Override
+    public void loadData() {
     }
 
     public void loadCalendar() {
         mAdapter = new MonthPagerAdapter(getChildFragmentManager(), mCalendar);
         mTvMonthOfYear.setText(TimeUtil.getFormattedYearMonth(Calendar.getInstance()));
-        mViewPager.setOffscreenPageLimit(5);
         mViewPager.setAdapter(mAdapter);
         mViewPager.setCurrentItem(TimeUtil.getNumberMonthBetWeenTwoDays(mCalendar, Calendar.getInstance()));
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -66,5 +68,10 @@ public class HistoryFragment extends BaseFragment {
     @Click(R.id.imgPrevMonth)
     void onClickPrevMonth() {
         mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1);
+    }
+
+    @Click(R.id.tvView)
+    void onClickView() {
+        replaceFragment(DetailHistoryFragment_.builder().build(), R.id.flContainer, false);
     }
 }

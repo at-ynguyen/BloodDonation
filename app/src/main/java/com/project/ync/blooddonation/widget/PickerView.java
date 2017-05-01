@@ -9,7 +9,7 @@
  *<p>
  *See LICENSE file for details
  */
-package jp.welby.pah.widget;
+package com.project.ync.blooddonation.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -25,19 +25,19 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.project.ync.blooddonation.R;
+import com.project.ync.blooddonation.util.ScreenUtil;
+
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import jp.welby.pah.R;
-import jp.welby.pah.util.ScreenUtil;
-
 /**
  * Custom Picker View
  *
- * @author TamNM
+ * @author YNC
  */
 public class PickerView extends View {
     /**

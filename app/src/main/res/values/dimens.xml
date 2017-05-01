@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <dimen name="calendar_text_size_day_of_week">10dp</dimen>
+</resources>

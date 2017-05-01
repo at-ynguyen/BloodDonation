@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <!--
+     <string name="url_host">http://10.168.61.80:8080</string>
+   -->
+    <string name="url_host">http://172.16.222.69:8080</string>
+</resources>

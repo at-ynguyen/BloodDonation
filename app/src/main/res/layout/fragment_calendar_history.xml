@@ -6,16 +6,17 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        android:padding="5dp">
 
         <TextView
-            android:background="@drawable/bg_buttom_header_bar"
+            android:id="@+id/tvView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:background="@drawable/bg_buttom_header_bar"
             android:padding="5dp"
             android:text="Xem Tổng quát"
             android:textColor="@android:color/white"

@@ -1,7 +1,16 @@
 package com.project.ync.blooddonation.shareds;
 
+import org.androidannotations.annotations.sharedpreferences.DefaultString;
+import org.androidannotations.annotations.sharedpreferences.SharedPref;
+
 /**
  * @author YNC
  */
-public class SharedPreferences {
+@SharedPref(SharedPref.Scope.UNIQUE)
+public interface SharedPreferences {
+    @DefaultString("")
+    String accessToken();
+
+    @DefaultString("")
+    String tokenNotification();
 }

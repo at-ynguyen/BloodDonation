@@ -1,4 +1,4 @@
-package jp.welby.pah.api.core;
+package com.project.ync.blooddonation.api.core;
 
 import android.content.Context;
 import android.content.SharedPreferences;

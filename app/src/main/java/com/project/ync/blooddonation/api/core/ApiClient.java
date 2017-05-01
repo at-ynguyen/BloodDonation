@@ -1,4 +1,4 @@
-package jp.welby.pah.api.core;
+package com.project.ync.blooddonation.api.core;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -8,6 +8,7 @@ import android.util.Log;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.project.ync.blooddonation.api.ApiService;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -21,8 +22,6 @@ import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import jp.welby.pah.BuildConfig;
-import jp.welby.pah.api.ApiService;
 
 /**
  * Api Service client.
@@ -33,7 +32,7 @@ public class ApiClient {
     private static final String HEADER_UA = "User-Agent";
     private static final String TAG = "ApiClient";
 
-    private static final int TIMEOUT_CONNECTION = 15000;
+    private static final int TIMEOUT_CONNECTION = 30000;
 
     private static ApiClient sApiClient;
     private static Context sContext;
@@ -63,12 +62,6 @@ public class ApiClient {
 
     public void init(final ApiConfig apiConfig) {
         sContext = apiConfig.getContext();
-
-        // authenticate
-        if (BuildConfig.BUILD_TYPE.equals("stage")) {
-            HeaderStore.getInstance(sContext).addAuth("welby", "rp3Va5vJ");
-        }
-
         // initialize OkHttpClient
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

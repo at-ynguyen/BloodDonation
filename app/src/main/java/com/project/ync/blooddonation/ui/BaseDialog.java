@@ -18,7 +18,7 @@ import org.androidannotations.annotations.EFragment;
  */
 @EFragment
 public abstract class BaseDialog extends DialogFragment {
-    protected abstract void init();
+     protected abstract void init();
 
     @Override
     public void onResume() {

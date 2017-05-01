@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">blooddonation</string>
+    <string name="app_name">Hiến máu</string>
+    <string name="valid_error_retrofit_network_error">Internet có vấn đề xin vui lòng kiểm tra lại</string>
 </resources>

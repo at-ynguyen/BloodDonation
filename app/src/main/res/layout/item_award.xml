@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="5dp"
+    android:layout_marginBottom="2dp"
     android:background="@android:color/white"
     android:padding="5dp">
 
@@ -20,18 +20,21 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="NGUYEN VĂN A"
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tvBloodType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nhóm máu: A"
             android:textSize="10dp" />
 
         <TextView
+            android:id="@+id/tvNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Số lần hiến: 10"

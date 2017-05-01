@@ -1,4 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_selected"
+        android:title="Trang chủ"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_history"
+        android:enabled="true"
+        android:icon="@drawable/ic_history_selected"
+        android:title="Lịch sử"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_award"
+        android:enabled="true"
+        android:icon="@drawable/ic_award_selected"
+        android:title="Đóng góp"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_menu"
+        android:enabled="true"
+        android:icon="@drawable/ic_menu_selected"
+        android:title="menu"
+        app:showAsAction="always" />
 </menu>

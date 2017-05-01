@@ -1,2 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <declare-styleable name="CustomButton">
+        <!--Default Android attrs-->
+        <attr name="android:enabled" />
+        <attr name="android:textStyle" />
+        <attr name="android:text" />
+        <attr name="android:textSize" />
+        <attr name="btn_padding" format="dimension" />
+        <attr name="btn_defaultColor" format="color" />
+        <attr name="btn_text" format="string" />
+        <attr name="btn_textColor" format="color" />
+        <attr name="btn_iconResource" format="integer" />
+        <attr name="btn_iconPosition" format="enum">
+            <enum name="left" value="1" />
+            <enum name="right" value="2" />
+            <enum name="top" value="3" />
+            <enum name="bottom" value="4" />
+        </attr>
+
+        <attr name="btn_iconPadding" format="dimension" />
+        <attr name="btn_borderColor" format="color" />
+        <attr name="btn_borderWidth" format="dimension" />
+        <attr name="btn_focusColor" format="color" />
+        <attr name="btn_disabledColor" format="color" />
+        <attr name="btn_disabledTextColor" format="color" />
+        <attr name="btn_disabledBorderColor" format="color" />
+        <attr name="btn_radius" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomMenuItem">
+        <attr name="title" format="string" />
+    </declare-styleable>
+    <declare-styleable name="PickerView">
+        <attr name="lineColor" format="color" />
+        <attr name="topBottomTextColor" format="color" />
+        <attr name="centerTextColor" format="color" />
+        <attr name="textSize" format="dimension" />
+        <attr name="canLoop" format="boolean" />
+        <attr name="initPosition" format="integer" />
+        <attr name="drawItemCount" format="integer" />
+    </declare-styleable>
+</resources>

@@ -1,12 +1,12 @@
-package jp.welby.pah.ui.calendar;
+package com.project.ync.blooddonation.ui.history;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.support.v13.app.FragmentStatePagerAdapter;
 
-import java.util.Calendar;
+import com.project.ync.blooddonation.util.TimeUtil;
 
-import jp.welby.pah.util.TimeUtil;
+import java.util.Calendar;
 
 /**
  * @author Ync.
@@ -14,12 +14,10 @@ import jp.welby.pah.util.TimeUtil;
 public class MonthPagerAdapter extends FragmentStatePagerAdapter {
     private static final int MAX_MONTH_LIMIT = 12;
     private static final int MAX_YEAR_LIMIT = 3000;
-    private int mType;
     private Calendar mCalendar;
 
-    public MonthPagerAdapter(FragmentManager fm, Calendar calendar, int type) {
+    public MonthPagerAdapter(FragmentManager fm, Calendar calendar) {
         super(fm);
-        mType = type;
         mCalendar = calendar != null ? calendar : Calendar.getInstance();
     }
 
@@ -28,7 +26,7 @@ public class MonthPagerAdapter extends FragmentStatePagerAdapter {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.MONTH, position - TimeUtil.getNumberMonthBetWeenTwoDays(mCalendar, Calendar.getInstance()));
         return MonthFragment_.builder()
-                .mCalendar(calendar).mStartNote(mCalendar).mType(mType).build();
+                .mCalendar(calendar).mStartNote(mCalendar).build();
     }
 
     @Override

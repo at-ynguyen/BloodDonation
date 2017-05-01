@@ -8,17 +8,21 @@ import android.view.MotionEvent;
 /**
  * @author YNC
  */
-public class CustomViewPager extends ViewPager {
-    public CustomViewPager(Context context) {
-        super(context);
-    }
+public class NoSwipeViewPager extends ViewPager {
 
-    public CustomViewPager(Context context, AttributeSet attrs) {
+    public NoSwipeViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
     @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
+    public boolean onTouchEvent(MotionEvent event) {
         return false;
+
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent event) {
+        return false;
+
     }
 }
