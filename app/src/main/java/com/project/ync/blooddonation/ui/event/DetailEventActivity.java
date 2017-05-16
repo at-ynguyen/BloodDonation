@@ -1,5 +1,6 @@
 package com.project.ync.blooddonation.ui.event;
 
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -15,6 +16,7 @@ import com.project.ync.blooddonation.shareds.SharedPreferences_;
 import com.project.ync.blooddonation.ui.BaseActivity;
 import com.project.ync.blooddonation.ui.wellcome.LoginActivity_;
 import com.project.ync.blooddonation.util.DialogUtil;
+import com.project.ync.blooddonation.util.ShareUtils;
 import com.project.ync.blooddonation.util.TimeUtil;
 
 import org.androidannotations.annotations.Click;
@@ -62,7 +64,7 @@ public class DetailEventActivity extends BaseActivity {
                 mProgressBar.setVisibility(View.GONE);
                 if (eventResponse != null) {
                     mTvTime.setText(TimeUtil.parseDate(eventResponse.getEvent().getCreateAt()));
-                    mTvContent.setText(eventResponse.getEvent().getContent());
+                    mTvContent.setText(Html.fromHtml(eventResponse.getEvent().getContent()));
                     mTvTitle.setText(eventResponse.getEvent().getEventName());
                     mTvMember.setText(eventResponse.getNumbers() + " người tham gia");
                 }
@@ -130,6 +132,10 @@ public class DetailEventActivity extends BaseActivity {
                 }, DetailEventActivity.this, "Thông báo", "Bạn phải đăng nhập để đăng ký tham gia đợt hiến máu này");
             }
         }
+    }
+    @Click(R.id.tvShare)
+    void onShareClick(){
+        ShareUtils.SharingToSocialMedia("/index/view/event/" + mId, this);
     }
 
 }

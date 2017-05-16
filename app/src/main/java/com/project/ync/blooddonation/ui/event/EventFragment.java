@@ -101,7 +101,7 @@ public class EventFragment extends BaseFragment {
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Call<List<EventResponse>> call = ApiClient.call().getListEvent(currentPages);
+                Call<List<EventResponse>> call = ApiClient.call().getListEvent(1);
                 call.enqueue(new ApiCallback<List<EventResponse>>() {
                     @Override
                     public void success(List<EventResponse> eventResponses) {

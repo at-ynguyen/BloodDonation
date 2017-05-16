@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.project.ync.blooddonation.R;
 import com.project.ync.blooddonation.api.core.ApiCallback;
@@ -38,6 +39,9 @@ public class DetailHistoryFragment extends BaseFragment {
     RelativeLayout mRlNotify;
     @ViewById(R.id.progressBar)
     ProgressBar mProgressBar;
+    @ViewById(R.id.tvWait)
+    TextView mTvWait;
+
     @Pref
     SharedPreferences_ mPref;
     List<History> mHistorys = new ArrayList<>();
@@ -58,9 +62,16 @@ public class DetailHistoryFragment extends BaseFragment {
                 @Override
                 public void success(List<History> histories) {
                     mProgressBar.setVisibility(View.GONE);
-                    mHistorys.clear();
-                    mHistorys.addAll(histories);
-                    adapter.notifyDataSetChanged();
+                    if (histories.size() > 0) {
+                        mRecyclerView.setVisibility(View.VISIBLE);
+                        mTvWait.setVisibility(View.GONE);
+                        mHistorys.clear();
+                        mHistorys.addAll(histories);
+                        adapter.notifyDataSetChanged();
+                    } else {
+                        mRecyclerView.setVisibility(View.GONE);
+                        mTvWait.setVisibility(View.VISIBLE);
+                    }
                 }
 
                 @Override

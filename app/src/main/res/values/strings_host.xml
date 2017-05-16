@@ -3,5 +3,5 @@
     <!--
      <string name="url_host">http://10.168.61.80:8080</string>
    -->
-    <string name="url_host">http://172.16.222.61:8080</string>
+    <string name="url_host">http://172.16.28.170:8080</string>
 </resources>

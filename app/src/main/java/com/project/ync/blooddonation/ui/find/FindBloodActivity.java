@@ -23,6 +23,8 @@ import com.project.ync.blooddonation.ui.BaseActivity;
 import com.project.ync.blooddonation.ui.dialog.StandardPickerDialog;
 import com.project.ync.blooddonation.ui.dialog.StandardPickerDialog_;
 import com.project.ync.blooddonation.ui.home.HomeActivity_;
+import com.project.ync.blooddonation.ui.wellcome.LoginActivity_;
+import com.project.ync.blooddonation.util.DialogUtil;
 import com.project.ync.blooddonation.util.KeyboardUtil;
 
 import org.androidannotations.annotations.Click;
@@ -33,6 +35,7 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
 
 import java.io.File;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -169,6 +172,13 @@ public class FindBloodActivity extends BaseActivity {
             @Override
             public void failure(ApiError apiError) {
                 mProgressBar.setVisibility(View.GONE);
+                DialogUtil.createErrorDialog(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        mPref.accessToken().put("");
+                        LoginActivity_.intent(FindBloodActivity.this).start();
+                    }
+                }, FindBloodActivity.this, "Lỗi", "Thất bại vui lòng kiểm tra lại");
             }
         });
     }

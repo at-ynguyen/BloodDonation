@@ -33,10 +33,12 @@
         app:btn_defaultColor="@android:color/white"
         app:btn_textColor="@color/colorPrimary" />
 
-    <com.project.ync.blooddonation.widget.CustomButton
-        android:id="@+id/btnkeep"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvSkip"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="20dp"
         android:text="Bỏ qua"
-        app:btn_defaultColor="#9b59b6" />
+        android:textColor="#2980b9"
+        android:textStyle="bold" />
 </LinearLayout>

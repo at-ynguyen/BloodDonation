@@ -79,8 +79,8 @@
                 android:text="Đăng nhập"
                 app:btn_borderColor="@color/colorPrimary"
                 app:btn_borderWidth="1dp"
-                app:btn_defaultColor="@android:color/white"
-                app:btn_textColor="@color/colorPrimary" />
+                app:btn_defaultColor="@color/colorPrimary"
+                app:btn_textColor="@android:color/white" />
 
             <com.project.ync.blooddonation.widget.CustomButton
                 android:id="@+id/btnRegister"
@@ -90,7 +90,10 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="40dp"
                 android:text="Đăng ký"
-                app:btn_defaultColor="@color/colorPrimary" />
+                app:btn_borderColor="@color/colorPrimary"
+                app:btn_borderWidth="1dp"
+                app:btn_defaultColor="@android:color/white"
+                app:btn_textColor="@color/colorPrimary" />
         </LinearLayout>
     </ScrollView>
 

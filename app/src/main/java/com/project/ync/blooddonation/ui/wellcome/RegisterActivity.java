@@ -13,6 +13,7 @@ import com.project.ync.blooddonation.api.response.RegisterResponse;
 import com.project.ync.blooddonation.shareds.SharedPreferences_;
 import com.project.ync.blooddonation.ui.BaseActivity;
 import com.project.ync.blooddonation.ui.home.HomeActivity_;
+import com.project.ync.blooddonation.util.DialogUtil;
 import com.project.ync.blooddonation.util.KeyboardUtil;
 
 import org.androidannotations.annotations.Click;
@@ -20,6 +21,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import retrofit2.Call;
 
 /**
@@ -71,7 +73,13 @@ public class RegisterActivity extends BaseActivity {
 
             @Override
             public void failure(ApiError apiError) {
-
+                DialogUtil.createErrorDialog(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        mPref.accessToken().put("");
+                        LoginActivity_.intent(RegisterActivity.this).start();
+                    }
+                }, RegisterActivity.this, "Lỗi", "Đăng ký thất bại");
             }
         });
     }

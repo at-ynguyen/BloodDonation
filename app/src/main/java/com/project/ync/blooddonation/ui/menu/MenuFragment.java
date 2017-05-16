@@ -76,4 +76,9 @@ public class MenuFragment extends BaseFragment {
         ChangePasswordActivity_.intent(getActivity()).start();
     }
 
+    @Click(R.id.btnLogin)
+    void onLoginClick() {
+        LoginActivity_.intent(getActivity()).start();
+    }
+
 }

@@ -1,5 +1,8 @@
 package com.project.ync.blooddonation.ui.event;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -12,6 +15,7 @@ import com.project.ync.blooddonation.api.core.ApiClient;
 import com.project.ync.blooddonation.api.core.ApiError;
 import com.project.ync.blooddonation.model.FindBlood;
 import com.project.ync.blooddonation.ui.BaseActivity;
+import com.project.ync.blooddonation.util.ShareUtils;
 import com.project.ync.blooddonation.util.TimeUtil;
 
 import org.androidannotations.annotations.Click;
@@ -42,6 +46,8 @@ public class DetailFindBloodActivity extends BaseActivity {
     @Extra
     int mId;
 
+    private String mSdt;
+
     @Override
     protected void init() {
         mProgressBar.setVisibility(View.VISIBLE);
@@ -61,6 +67,8 @@ public class DetailFindBloodActivity extends BaseActivity {
                         mImgView.setVisibility(View.GONE);
                     }
                     mTvTitle.setText(findBlood.getPostName());
+                    mSdt = findBlood.getUser().getPhoneNumber();
+                    Log.i("TAG1", mSdt);
                 }
             }
 
@@ -74,5 +82,19 @@ public class DetailFindBloodActivity extends BaseActivity {
     @Click(R.id.imgBack)
     void onBackClick() {
         onBackPressed();
+    }
+
+    @Click(R.id.btnHelp)
+    void onHelpClick() {
+        if (mSdt != null) {
+            Uri uri = Uri.parse("tel:" + mSdt);
+            Intent i = new Intent(Intent.ACTION_CALL, uri);
+            startActivity(i);
+        }
+    }
+
+    @Click(R.id.tvShare)
+    void onClickShare() {
+        ShareUtils.SharingToSocialMedia("index/view/findblood" + mId, this);
     }
 }

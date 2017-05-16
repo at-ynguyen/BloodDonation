@@ -13,6 +13,7 @@ import com.project.ync.blooddonation.api.response.LoginResponse;
 import com.project.ync.blooddonation.shareds.SharedPreferences_;
 import com.project.ync.blooddonation.ui.BaseActivity;
 import com.project.ync.blooddonation.ui.home.HomeActivity_;
+import com.project.ync.blooddonation.util.DialogUtil;
 import com.project.ync.blooddonation.util.KeyboardUtil;
 import com.project.ync.blooddonation.widget.LoadingBar;
 
@@ -21,6 +22,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import retrofit2.Call;
 
 /**
@@ -62,6 +64,13 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void failure(ApiError apiError) {
                 mProgressBar.setVisibility(View.GONE);
+                DialogUtil.createErrorDialog(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        mPref.accessToken().put("");
+                        LoginActivity_.intent(LoginActivity.this).start();
+                    }
+                }, LoginActivity.this, "Lỗi", "Đăng nhập thất bại");
             }
         });
 

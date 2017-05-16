@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="Đóng góp"
+            android:text="Chi tiết đợt hiến máu"
             android:textColor="@color/colorPrimary"
             android:textStyle="bold" />
 
@@ -130,7 +130,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvContent"
                 android:layout_centerHorizontal="true"
-                android:layout_margin="5dp"
+                android:layout_margin="10dp"
                 android:background="#2ecc71"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"

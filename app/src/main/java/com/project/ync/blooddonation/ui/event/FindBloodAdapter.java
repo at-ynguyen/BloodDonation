@@ -1,9 +1,6 @@
 package com.project.ync.blooddonation.ui.event;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ResolveInfo;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.project.ync.blooddonation.R;
 import com.project.ync.blooddonation.model.FindBlood;
 import com.project.ync.blooddonation.ui.BaseAdapter;
+import com.project.ync.blooddonation.util.ShareUtils;
 import com.project.ync.blooddonation.util.TimeUtil;
 import com.project.ync.blooddonation.widget.LoadingBar;
 
@@ -137,26 +135,8 @@ public class FindBloodAdapter extends BaseAdapter<RecyclerView.ViewHolder> {
             mTvShare.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String urlToShare = getString(R.string.url_host) + mFindBloods.get(getAdapterPosition()).getImage();
-                    Intent intent = new Intent(Intent.ACTION_SEND);
-                    intent.setType("text/plain");
-                    intent.putExtra(Intent.EXTRA_TEXT, urlToShare);
-                    boolean facebookAppFound = false;
-                    List<ResolveInfo> matches = getContext().getPackageManager().queryIntentActivities(intent, 0);
-                    for (ResolveInfo info : matches) {
-                        if (info.activityInfo.packageName.toLowerCase().startsWith("com.facebook.katana")) {
-                            intent.setPackage(info.activityInfo.packageName);
-                            facebookAppFound = true;
-                            break;
-                        }
-                    }
-
-                    if (!facebookAppFound) {
-                        String sharerUrl = "https://www.facebook.com/sharer/sharer.php?u=" + urlToShare;
-                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse(sharerUrl));
-                    }
-
-                    getContext().startActivity(intent);
+                    int id = mFindBloods.get(getAdapterPosition()).getId();
+                    ShareUtils.SharingToSocialMedia("index/view/findblood" + id, getContext());
                 }
             });
             mLlFind.setOnClickListener(new View.OnClickListener() {

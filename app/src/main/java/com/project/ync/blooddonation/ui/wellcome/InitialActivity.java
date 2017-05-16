@@ -27,7 +27,7 @@ public class InitialActivity extends BaseActivity {
         RegisterActivity_.intent(InitialActivity.this).start();
     }
 
-    @Click(R.id.btnkeep)
+    @Click(R.id.tvSkip)
     void clickKeep() {
         HomeActivity_.intent(InitialActivity.this).start();
     }

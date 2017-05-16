@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import com.project.ync.blooddonation.R;
 import com.project.ync.blooddonation.api.response.EventResponse;
 import com.project.ync.blooddonation.ui.BaseAdapter;
+import com.project.ync.blooddonation.util.ShareUtils;
 import com.project.ync.blooddonation.util.TimeUtil;
 import com.project.ync.blooddonation.widget.LoadingBar;
 
@@ -88,7 +90,7 @@ public class EventAdapter extends BaseAdapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof EventViewHolder) {
             ((EventViewHolder) holder).mTvTime.setText(TimeUtil.parseDate(mEventResponses.get(position).getEvent().getCreateAt()));
-            ((EventViewHolder) holder).mTvContent.setText(mEventResponses.get(position).getEvent().getContent());
+            ((EventViewHolder) holder).mTvContent.setText(Html.fromHtml(mEventResponses.get(position).getEvent().getContent()));
             ((EventViewHolder) holder).mTvTitle.setText(mEventResponses.get(position).getEvent().getEventName());
             ((EventViewHolder) holder).mTvMember.setText(mEventResponses.get(position).getNumbers() + " người tham gia");
         } else if (holder instanceof LoadingViewHolder) {
@@ -112,6 +114,7 @@ public class EventAdapter extends BaseAdapter<RecyclerView.ViewHolder> {
         TextView mTvTitle;
         TextView mTvMember;
         RelativeLayout mRlItem;
+        TextView mTvShare;
 
         public EventViewHolder(View itemView) {
             super(itemView);
@@ -124,6 +127,14 @@ public class EventAdapter extends BaseAdapter<RecyclerView.ViewHolder> {
                 @Override
                 public void onClick(View v) {
                     mListener.onItemClick(getAdapterPosition());
+                }
+            });
+            mTvShare = (TextView)itemView.findViewById(R.id.tvShare);
+            mTvShare.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int id = mEventResponses.get(getLayoutPosition()).getEvent().getId();
+                    ShareUtils.SharingToSocialMedia("/index/view/event/" + id, getContext());
                 }
             });
         }

@@ -99,7 +99,7 @@ public class FindBloodFragment extends BaseFragment {
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Call<List<FindBlood>> call = ApiClient.call().getListFindBlood(mCurrentPages);
+                Call<List<FindBlood>> call = ApiClient.call().getListFindBlood(1);
                 call.enqueue(new ApiCallback<List<FindBlood>>() {
                     @Override
                     public void success(List<FindBlood> findBloods) {
