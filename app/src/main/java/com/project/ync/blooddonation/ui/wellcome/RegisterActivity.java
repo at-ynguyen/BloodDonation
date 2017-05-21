@@ -37,6 +37,8 @@ public class RegisterActivity extends BaseActivity {
     EditText mEdtFullName;
     @ViewById(R.id.edtCardId)
     EditText mEdtCardId;
+    @ViewById(R.id.edtPhoneNumber)
+    EditText mEdtPhoneNumber;
     @ViewById(R.id.rdMan)
     RadioButton mRdMan;
     @ViewById(R.id.llRegister)
@@ -60,6 +62,7 @@ public class RegisterActivity extends BaseActivity {
                                 .password(mEdtPassword.getText().toString())
                                 .fullName(mEdtFullName.getText().toString())
                                 .cardId(mEdtCardId.getText().toString())
+                                .phoneNumber(mEdtPhoneNumber.getText().toString())
                                 .gender(mRdMan.isChecked())
                                 .build());
         call.enqueue(new ApiCallback<RegisterResponse>() {
@@ -77,7 +80,8 @@ public class RegisterActivity extends BaseActivity {
                     @Override
                     public void onClick(SweetAlertDialog sweetAlertDialog) {
                         mPref.accessToken().put("");
-                        LoginActivity_.intent(RegisterActivity.this).start();
+                        RegisterActivity_.intent(RegisterActivity.this).start();
+                        finish();
                     }
                 }, RegisterActivity.this, "Lỗi", "Đăng ký thất bại");
             }

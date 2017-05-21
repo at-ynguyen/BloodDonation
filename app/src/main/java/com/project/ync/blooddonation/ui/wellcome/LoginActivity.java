@@ -69,6 +69,7 @@ public class LoginActivity extends BaseActivity {
                     public void onClick(SweetAlertDialog sweetAlertDialog) {
                         mPref.accessToken().put("");
                         LoginActivity_.intent(LoginActivity.this).start();
+                        finish();
                     }
                 }, LoginActivity.this, "Lỗi", "Đăng nhập thất bại");
             }

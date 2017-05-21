@@ -23,6 +23,8 @@ public class RegisterBody {
     private String cardId;
     @SerializedName("gender")
     private boolean gender;
+    @SerializedName("phone_number")
+    private String phoneNumber;
 
     public RegisterBody() {
     }

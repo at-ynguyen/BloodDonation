@@ -41,12 +41,16 @@ public class AwardFragment extends BaseFragment {
         final AwardAdapter adapter = new AwardAdapter(getActivity(), mAwards);
         mRyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRyclerView.setAdapter(adapter);
-        mProgressBar.setVisibility(View.VISIBLE);
+        if (mProgressBar != null) {
+            mProgressBar.setVisibility(View.VISIBLE);
+        }
         Call<List<Award>> call = ApiClient.call().getListAward();
         call.enqueue(new ApiCallback<List<Award>>() {
             @Override
             public void success(List<Award> awards) {
-                mProgressBar.setVisibility(View.GONE);
+                if (mProgressBar != null) {
+                    mProgressBar.setVisibility(View.GONE);
+                }
                 mAwards.clear();
                 mAwards.addAll(awards);
                 adapter.notifyDataSetChanged();
@@ -54,7 +58,9 @@ public class AwardFragment extends BaseFragment {
 
             @Override
             public void failure(ApiError apiError) {
-                mProgressBar.setVisibility(View.GONE);
+                if (mProgressBar != null) {
+                    mProgressBar.setVisibility(View.GONE);
+                }
             }
         });
 

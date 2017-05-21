@@ -23,7 +23,6 @@ import com.project.ync.blooddonation.ui.BaseActivity;
 import com.project.ync.blooddonation.ui.dialog.StandardPickerDialog;
 import com.project.ync.blooddonation.ui.dialog.StandardPickerDialog_;
 import com.project.ync.blooddonation.ui.home.HomeActivity_;
-import com.project.ync.blooddonation.ui.wellcome.LoginActivity_;
 import com.project.ync.blooddonation.util.DialogUtil;
 import com.project.ync.blooddonation.util.KeyboardUtil;
 
@@ -160,7 +159,7 @@ public class FindBloodActivity extends BaseActivity {
         });
     }
 
-    private void postFindNoImage(FindBloodBody findBloodBody) {
+    private void postFindNoImage(final FindBloodBody findBloodBody) {
         Call<FindBloodBody> call = ApiClient.call().createFindBloodNoImage(mPref.accessToken().get(), findBloodBody);
         call.enqueue(new ApiCallback<FindBloodBody>() {
             @Override
@@ -176,7 +175,8 @@ public class FindBloodActivity extends BaseActivity {
                     @Override
                     public void onClick(SweetAlertDialog sweetAlertDialog) {
                         mPref.accessToken().put("");
-                        LoginActivity_.intent(FindBloodActivity.this).start();
+                        FindBloodActivity_.intent(FindBloodActivity.this).start();
+                        finish();
                     }
                 }, FindBloodActivity.this, "Lỗi", "Thất bại vui lòng kiểm tra lại");
             }

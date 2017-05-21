@@ -1,6 +1,7 @@
 package com.project.ync.blooddonation.ui.menu;
 
 import android.app.DatePickerDialog;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -60,6 +61,7 @@ public class InfoActivity extends BaseActivity {
     @Override
     protected void init() {
         mProgressBar.setVisibility(View.VISIBLE);
+        Log.i("TAG111",mPref.accessToken().get());
         Call<User> call = ApiClient.call().getInfoUser(mPref.accessToken().get());
         call.enqueue(new ApiCallback<User>() {
             @Override
