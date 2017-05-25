@@ -30,6 +30,8 @@ public class FindBlood {
     private String image;
     @SerializedName("approved")
     private boolean approved;
+    @SerializedName("done")
+    private boolean done;
     @SerializedName("status")
     private boolean status;
     @SerializedName("createAt")

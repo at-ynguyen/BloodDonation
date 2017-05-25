@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * Api Error.
  *
- * @author BiNC
+ * @author YNC
  */
 @Data
 @AllArgsConstructor(suppressConstructorProperties = true)

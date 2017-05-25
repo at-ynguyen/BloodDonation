@@ -57,10 +57,13 @@ public class DetailFindBloodActivity extends BaseActivity {
             public void success(FindBlood findBlood) {
                 mProgressBar.setVisibility(View.GONE);
                 if (findBlood != null) {
+                    mImgView.setVisibility(View.GONE);
                     mTvContent.setText(findBlood.getPostContent());
                     mTvName.setText(findBlood.getUser().getFullName());
                     mTvTime.setText(TimeUtil.parseDate(findBlood.getCreateAt()));
-                    if (!findBlood.getImage().equals("") || findBlood.getImage() != null) {
+                    Log.i("IMAGE", findBlood.getImage() + "----------------");
+                    if (!findBlood.getImage().equals("") || !"".equals(findBlood.getImage())) {
+                        Log.i("IMAGE","AAAAAAAAAAAAA");
                         mImgView.setVisibility(View.VISIBLE);
                         Glide.with(DetailFindBloodActivity.this).load(getString(R.string.url_host) + findBlood.getImage()).centerCrop().into(mImgView);
                     } else {

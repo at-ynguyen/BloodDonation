@@ -27,11 +27,12 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * Api Service
  *
- * @author BiNC
+ * @author YNC
  */
 public interface ApiService {
     @POST("/api/auth/login")
@@ -41,7 +42,7 @@ public interface ApiService {
     Call<RegisterResponse> register(@Body RegisterBody registerBody);
 
     @GET("/api/user/update/notification/{token}")
-    Call<Object> putTokenNotification(@Header(Parameter.AUTHORIZATION) String accessToken, @Path("token") String token);
+    Call<Object> putTokenNotification(@Path("token") String token, @Query("email") String email);
 
     @GET("/api/event/{page}")
     Call<List<EventResponse>> getListEvent(@Path("page") int page);
@@ -78,9 +79,15 @@ public interface ApiService {
     Call<ObjectResponse> changePassword(@Header(Parameter.AUTHORIZATION) String accessToken, @Body ChangePasswordBody changePasswordBody);
 
     @GET("/api/event/member/{id}")
-    Call<Object> joinEvent(@Header(Parameter.AUTHORIZATION) String accessToken, @Path("id") int id);
+    Call<Object> joinEvent(@Path("id") int id, @Query("email") String email);
 
     @GET("/api/event/check/{id}")
     Call<ObjectResponse> checkEvent(@Header(Parameter.AUTHORIZATION) String accessToken, @Path("id") int id);
+
+    @GET("/api/find/user")
+    Call<List<FindBlood>> getFindBloodUser(@Header(Parameter.AUTHORIZATION) String accessToken);
+
+    @GET("/api/find/user/check/{id}")
+    Call<FindBlood> check(@Header(Parameter.AUTHORIZATION) String accessToken, @Path("id") int id);
 
 }

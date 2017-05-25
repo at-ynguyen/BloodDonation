@@ -35,6 +35,12 @@
         app:title="Đăng tin tìm máu" />
 
     <com.project.ync.blooddonation.widget.CustomMenuItem_
+        android:id="@+id/btnListFindBlood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Danh sách tìm máu đã đăng" />
+
+    <com.project.ync.blooddonation.widget.CustomMenuItem_
         android:id="@+id/btnInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -70,6 +70,7 @@ public class RegisterActivity extends BaseActivity {
             public void success(RegisterResponse registerResponse) {
                 if (registerResponse != null && registerResponse.getToken() != null) {
                     mPref.accessToken().put(registerResponse.getToken());
+                    mPref.email().put(mEdtEmail.getText().toString());
                     HomeActivity_.intent(RegisterActivity.this).start();
                 }
             }
@@ -80,8 +81,7 @@ public class RegisterActivity extends BaseActivity {
                     @Override
                     public void onClick(SweetAlertDialog sweetAlertDialog) {
                         mPref.accessToken().put("");
-                        RegisterActivity_.intent(RegisterActivity.this).start();
-                        finish();
+                        sweetAlertDialog.dismiss();
                     }
                 }, RegisterActivity.this, "Lỗi", "Đăng ký thất bại");
             }

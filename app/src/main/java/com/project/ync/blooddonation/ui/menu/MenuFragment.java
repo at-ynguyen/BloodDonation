@@ -81,4 +81,9 @@ public class MenuFragment extends BaseFragment {
         LoginActivity_.intent(getActivity()).start();
     }
 
+    @Click(R.id.btnListFindBlood)
+    void onListFindBloodClick() {
+        ListFindBlood_.intent(getActivity()).start();
+    }
+
 }

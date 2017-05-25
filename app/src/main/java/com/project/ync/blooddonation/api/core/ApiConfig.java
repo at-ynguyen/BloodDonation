@@ -8,7 +8,7 @@ import lombok.Value;
 /**
  * Api config.
  *
- * @author BiNC
+ * @author YNC
  */
 @Value
 @Builder

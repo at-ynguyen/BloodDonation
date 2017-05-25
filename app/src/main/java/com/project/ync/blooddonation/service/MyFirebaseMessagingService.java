@@ -34,6 +34,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         showNotification(getApplicationContext(), remoteMessage);
     }
 
+
     /**
      * Show notification
      */

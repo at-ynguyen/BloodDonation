@@ -105,7 +105,7 @@ public class DetailEventActivity extends BaseActivity {
     void onJoinClick() {
         if (isCheck) {
             if (mPref.accessToken().get().equals("") || mPref.accessToken().get() != null) {
-                Call<Object> call = ApiClient.call().joinEvent(mPref.accessToken().get(), mId);
+                Call<Object> call = ApiClient.call().joinEvent(mId, mPref.email().get());
                 call.enqueue(new ApiCallback<Object>() {
                     @Override
                     public void success(Object obj) {
@@ -133,8 +133,9 @@ public class DetailEventActivity extends BaseActivity {
             }
         }
     }
+
     @Click(R.id.tvShare)
-    void onShareClick(){
+    void onShareClick() {
         ShareUtils.SharingToSocialMedia("/index/view/event/" + mId, this);
     }
 

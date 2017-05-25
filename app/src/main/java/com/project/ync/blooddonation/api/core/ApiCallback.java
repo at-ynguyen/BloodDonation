@@ -18,7 +18,7 @@ import retrofit2.Response;
  * Api Callback.
  *
  * @param <T> object call back
- * @author BiNC
+ * @author YNC
  */
 
 public abstract class ApiCallback<T> implements Callback<T> {

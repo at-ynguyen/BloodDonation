@@ -13,4 +13,7 @@ public interface SharedPreferences {
 
     @DefaultString("")
     String tokenNotification();
+
+    @DefaultString("")
+    String email();
 }

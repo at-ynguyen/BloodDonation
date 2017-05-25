@@ -45,6 +45,9 @@
         <activity
             android:name=".ui.menu.ChangePasswordActivity_"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".ui.menu.ListFindBlood_"
+            android:windowSoftInputMode="stateAlwaysHidden" />
 
         <service android:name=".service.MyFirebaseMessagingService">
             <intent-filter>

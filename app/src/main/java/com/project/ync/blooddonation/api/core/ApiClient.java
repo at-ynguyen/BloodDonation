@@ -26,7 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Api Service client.
  *
- * @author BiNC
+ * @author YNC
  */
 public class ApiClient {
     private static final String HEADER_UA = "User-Agent";

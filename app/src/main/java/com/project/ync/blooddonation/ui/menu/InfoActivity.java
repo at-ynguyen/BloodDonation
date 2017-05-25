@@ -21,6 +21,7 @@ import com.project.ync.blooddonation.shareds.SharedPreferences_;
 import com.project.ync.blooddonation.ui.BaseActivity;
 import com.project.ync.blooddonation.ui.dialog.StandardPickerDialog;
 import com.project.ync.blooddonation.ui.dialog.StandardPickerDialog_;
+import com.project.ync.blooddonation.util.DialogUtil;
 import com.project.ync.blooddonation.util.TimeUtil;
 
 import org.androidannotations.annotations.Click;
@@ -32,6 +33,7 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
 import java.util.Calendar;
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import retrofit2.Call;
 
 /**
@@ -61,7 +63,7 @@ public class InfoActivity extends BaseActivity {
     @Override
     protected void init() {
         mProgressBar.setVisibility(View.VISIBLE);
-        Log.i("TAG111",mPref.accessToken().get());
+        Log.i("TAG111", mPref.accessToken().get());
         Call<User> call = ApiClient.call().getInfoUser(mPref.accessToken().get());
         call.enqueue(new ApiCallback<User>() {
             @Override
@@ -155,11 +157,18 @@ public class InfoActivity extends BaseActivity {
             @Override
             public void success(User user) {
                 mProgressBar.setVisibility(View.GONE);
+                DialogUtil.createSuccessSecret(InfoActivity.this, "Thành công", "Chỉnh sửa thành công").show();
             }
 
             @Override
             public void failure(ApiError apiError) {
                 mProgressBar.setVisibility(View.GONE);
+                DialogUtil.createErrorDialog(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        sweetAlertDialog.dismiss();
+                    }
+                }, InfoActivity.this, "Thất bại", "Chỉnh sửa thất bại");
             }
         });
     }

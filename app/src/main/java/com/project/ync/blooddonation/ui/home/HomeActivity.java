@@ -49,7 +49,7 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
         SharedPreferences mSharedPreferences = getSharedPreferences("PUSHNOTIFICATION", 0);
         String token = mSharedPreferences.getString("Token", null);
         Log.i("TAG11111", token + "");
-        Call<Object> call = ApiClient.call().putTokenNotification(mPref.accessToken().get(), token);
+        Call<Object> call = ApiClient.call().putTokenNotification( token,mPref.email().get());
         call.enqueue(new ApiCallback() {
             @Override
             public void success(Object o) {

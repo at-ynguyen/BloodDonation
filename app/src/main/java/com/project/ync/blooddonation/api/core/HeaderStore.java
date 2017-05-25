@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * Header store.
  *
- * @author BiNC
+ * @author YNC
  */
 public class HeaderStore {
     private static final String HEADER_STORE_NAME = "HEADER_STORE_NAME";

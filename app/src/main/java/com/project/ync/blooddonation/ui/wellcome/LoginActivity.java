@@ -56,6 +56,7 @@ public class LoginActivity extends BaseActivity {
             public void success(LoginResponse loginResponse) {
                 mProgressBar.setVisibility(View.GONE);
                 if (loginResponse != null) {
+                    mPref.email().put(mEdtEmail.getText().toString());
                     mPref.accessToken().put(loginResponse.getToken());
                     HomeActivity_.intent(LoginActivity.this).start();
                 }
@@ -68,8 +69,7 @@ public class LoginActivity extends BaseActivity {
                     @Override
                     public void onClick(SweetAlertDialog sweetAlertDialog) {
                         mPref.accessToken().put("");
-                        LoginActivity_.intent(LoginActivity.this).start();
-                        finish();
+                        sweetAlertDialog.dismiss();
                     }
                 }, LoginActivity.this, "Lỗi", "Đăng nhập thất bại");
             }

@@ -9,7 +9,7 @@ import android.support.v7.widget.RecyclerView;
 /**
  * LinearLayoutManagerWithSmoothScroller.
  *
- * @author BiNC
+ * @author YNC
  */
 public class LinearLayoutManagerWithSmoothScroller extends LinearLayoutManager {
 
